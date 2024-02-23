@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace LicitContrAPI.Models
 {
-    public partial class BancoDadosCLContext : DbContext
+    public partial class BancoDadosCLContext : IdentityDbContext<IdentityUser>
     {
         public BancoDadosCLContext()
         {
@@ -18,8 +20,8 @@ namespace LicitContrAPI.Models
 
         public virtual DbSet<Contrato> Contratos { get; set; } = null!;
         public virtual DbSet<Entidade> Entidades { get; set; } = null!;
-        public virtual DbSet<Fornecedore> Fornecedores { get; set; } = null!;
-        public virtual DbSet<Licitaco> Licitacoes { get; set; } = null!;
+        public virtual DbSet<Fornecedor> Fornecedores { get; set; } = null!;
+        public virtual DbSet<Licitacao> Licitacoes { get; set; } = null!;
         public virtual DbSet<Lote> Lotes { get; set; } = null!;
         public virtual DbSet<Objeto> Objetos { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
@@ -34,6 +36,8 @@ namespace LicitContrAPI.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<Contrato>(entity =>
             {
                 entity.HasKey(e => e.IdContrato)
@@ -108,7 +112,7 @@ namespace LicitContrAPI.Models
                     .HasDefaultValueSql("('Pública')");
             });
 
-            modelBuilder.Entity<Fornecedore>(entity =>
+            modelBuilder.Entity<Fornecedor>(entity =>
             {
                 entity.HasKey(e => e.IdFornecedor)
                     .HasName("PK__Forneced__6C477092251EB8F5");
@@ -144,7 +148,7 @@ namespace LicitContrAPI.Models
                     .HasDefaultValueSql("('Jurídica')");
             });
 
-            modelBuilder.Entity<Licitaco>(entity =>
+            modelBuilder.Entity<Licitacao>(entity =>
             {
                 entity.HasKey(e => e.IdLicitacao)
                     .HasName("PK__Licitaco__A9BF10D045BF8FE5");
@@ -276,9 +280,9 @@ namespace LicitContrAPI.Models
                     .HasConstraintName("FK_Usuarios_Entidades");
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+       
     }
 }

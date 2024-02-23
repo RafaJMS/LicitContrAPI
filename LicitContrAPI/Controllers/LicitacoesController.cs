@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LicitContrAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LicitContrAPI.Controllers
 {
@@ -22,7 +23,8 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Licitacoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Licitaco>>> GetLicitacoes()
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Licitacao>>> GetLicitacoes()
         {
           if (_context.Licitacoes == null)
           {
@@ -33,7 +35,8 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Licitacoes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Licitaco>> GetLicitaco(int id)
+        [Authorize]
+        public async Task<ActionResult<Licitacao>> GetLicitaco(int id)
         {
           if (_context.Licitacoes == null)
           {
@@ -52,7 +55,8 @@ namespace LicitContrAPI.Controllers
         // PUT: api/Licitacoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLicitaco(int id, Licitaco licitaco)
+        [Authorize]
+        public async Task<IActionResult> PutLicitaco(int id, Licitacao licitaco)
         {
             if (id != licitaco.IdLicitacao)
             {
@@ -83,7 +87,8 @@ namespace LicitContrAPI.Controllers
         // POST: api/Licitacoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Licitaco>> PostLicitaco(Licitaco licitaco)
+        [Authorize]
+        public async Task<ActionResult<Licitacao>> PostLicitaco(Licitacao licitaco)
         {
           if (_context.Licitacoes == null)
           {
@@ -97,6 +102,7 @@ namespace LicitContrAPI.Controllers
 
         // DELETE: api/Licitacoes/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteLicitaco(int id)
         {
             if (_context.Licitacoes == null)

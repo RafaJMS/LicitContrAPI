@@ -6,22 +6,25 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LicitContrAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LicitContrAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContratoesController : ControllerBase
+
+    public class ContratosController : ControllerBase
     {
         private readonly BancoDadosCLContext _context;
 
-        public ContratoesController(BancoDadosCLContext context)
+        public ContratosController(BancoDadosCLContext context)
         {
             _context = context;
         }
 
         // GET: api/Contratoes
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Contrato>>> GetContratos()
         {
           if (_context.Contratos == null)
@@ -33,6 +36,7 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Contratoes/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Contrato>> GetContrato(int id)
         {
           if (_context.Contratos == null)
@@ -52,6 +56,7 @@ namespace LicitContrAPI.Controllers
         // PUT: api/Contratoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutContrato(int id, Contrato contrato)
         {
             if (id != contrato.IdContrato)
@@ -83,6 +88,7 @@ namespace LicitContrAPI.Controllers
         // POST: api/Contratoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Contrato>> PostContrato(Contrato contrato)
         {
           if (_context.Contratos == null)
@@ -97,6 +103,7 @@ namespace LicitContrAPI.Controllers
 
         // DELETE: api/Contratoes/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteContrato(int id)
         {
             if (_context.Contratos == null)

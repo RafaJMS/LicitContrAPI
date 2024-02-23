@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LicitContrAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LicitContrAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Entidades
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Entidade>>> GetEntidades()
         {
           if (_context.Entidades == null)
@@ -33,6 +35,7 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Entidades/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Entidade>> GetEntidade(int id)
         {
           if (_context.Entidades == null)
@@ -52,6 +55,7 @@ namespace LicitContrAPI.Controllers
         // PUT: api/Entidades/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutEntidade(int id, Entidade entidade)
         {
             if (id != entidade.IdEntidade)
@@ -83,6 +87,7 @@ namespace LicitContrAPI.Controllers
         // POST: api/Entidades
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Entidade>> PostEntidade(Entidade entidade)
         {
           if (_context.Entidades == null)
@@ -97,6 +102,7 @@ namespace LicitContrAPI.Controllers
 
         // DELETE: api/Entidades/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteEntidade(int id)
         {
             if (_context.Entidades == null)

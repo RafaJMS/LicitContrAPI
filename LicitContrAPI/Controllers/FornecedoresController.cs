@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LicitContrAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LicitContrAPI.Controllers
 {
@@ -22,7 +23,8 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Fornecedores
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Fornecedore>>> GetFornecedores()
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Fornecedor>>> GetFornecedores()
         {
           if (_context.Fornecedores == null)
           {
@@ -33,7 +35,8 @@ namespace LicitContrAPI.Controllers
 
         // GET: api/Fornecedores/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Fornecedore>> GetFornecedore(int id)
+        [Authorize]
+        public async Task<ActionResult<Fornecedor>> GetFornecedore(int id)
         {
           if (_context.Fornecedores == null)
           {
@@ -52,7 +55,8 @@ namespace LicitContrAPI.Controllers
         // PUT: api/Fornecedores/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFornecedore(int id, Fornecedore fornecedore)
+        [Authorize]
+        public async Task<IActionResult> PutFornecedore(int id, Fornecedor fornecedore)
         {
             if (id != fornecedore.IdFornecedor)
             {
@@ -83,7 +87,8 @@ namespace LicitContrAPI.Controllers
         // POST: api/Fornecedores
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Fornecedore>> PostFornecedore(Fornecedore fornecedore)
+        [Authorize]
+        public async Task<ActionResult<Fornecedor>> PostFornecedore(Fornecedor fornecedore)
         {
           if (_context.Fornecedores == null)
           {
@@ -97,6 +102,7 @@ namespace LicitContrAPI.Controllers
 
         // DELETE: api/Fornecedores/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteFornecedore(int id)
         {
             if (_context.Fornecedores == null)

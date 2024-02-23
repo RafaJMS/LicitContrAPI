@@ -15,7 +15,7 @@ namespace LicitContrAPI.Models
         public int? IdObjeto { get; set; }
 
         public virtual Entidade? IdEntidadeNavigation { get; set; }
-        public virtual Fornecedore? IdFornecedorNavigation { get; set; }
+        public virtual Fornecedor? IdFornecedorNavigation { get; set; }
         public virtual Objeto? IdObjetoNavigation { get; set; }
     }
 

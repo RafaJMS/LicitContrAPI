@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace LicitContrAPI.Models
 {
-    public partial class Licitaco
+    public partial class Licitacao
     {
-        public Licitaco()
+        public Licitacao()
         {
             Lotes = new HashSet<Lote>();
         }

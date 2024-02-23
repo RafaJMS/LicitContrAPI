@@ -15,7 +15,7 @@ namespace LicitContrAPI.Models
         public string Descricao { get; set; } = null!;
         public decimal? ValorEstimadoTotal { get; set; }
 
-        public virtual Licitaco? IdLicitacaoNavigation { get; set; }
+        public virtual Licitacao? IdLicitacaoNavigation { get; set; }
         public virtual ICollection<Objeto> Objetos { get; set; }
     }
 }

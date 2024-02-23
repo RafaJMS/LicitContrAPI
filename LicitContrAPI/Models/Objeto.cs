@@ -19,7 +19,7 @@ namespace LicitContrAPI.Models
         public int? IdLote { get; set; }
         public int? IdFornecedor { get; set; }
 
-        public virtual Fornecedore? IdFornecedorNavigation { get; set; }
+        public virtual Fornecedor? IdFornecedorNavigation { get; set; }
         public virtual Lote? IdLoteNavigation { get; set; }
         public virtual ICollection<Contrato> Contratos { get; set; }
     }

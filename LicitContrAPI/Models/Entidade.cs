@@ -8,7 +8,7 @@ namespace LicitContrAPI.Models
         public Entidade()
         {
             Contratos = new HashSet<Contrato>();
-            Licitacos = new HashSet<Licitaco>();
+            Licitacos = new HashSet<Licitacao>();
             Usuarios = new HashSet<Usuario>();
         }
 
@@ -19,7 +19,7 @@ namespace LicitContrAPI.Models
         public string? Contato { get; set; }
 
         public virtual ICollection<Contrato> Contratos { get; set; }
-        public virtual ICollection<Licitaco> Licitacos { get; set; }
+        public virtual ICollection<Licitacao> Licitacos { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

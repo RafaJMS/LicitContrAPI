@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace LicitContrAPI.Models
 {
-    public partial class Fornecedore
+    public partial class Fornecedor
     {
-        public Fornecedore()
+        public Fornecedor()
         {
             Contratos = new HashSet<Contrato>();
             Objetos = new HashSet<Objeto>();
@@ -30,37 +30,37 @@ public static class FornecedoreEndpoints
     {
         routes.MapGet("/api/Fornecedore", () =>
         {
-            return new [] { new Fornecedore() };
+            return new [] { new Fornecedor() };
         })
         .WithName("GetAllFornecedores")
-        .Produces<Fornecedore[]>(StatusCodes.Status200OK);
+        .Produces<Fornecedor[]>(StatusCodes.Status200OK);
 
         routes.MapGet("/api/Fornecedore/{id}", (int id) =>
         {
             //return new Fornecedore { ID = id };
         })
         .WithName("GetFornecedoreById")
-        .Produces<Fornecedore>(StatusCodes.Status200OK);
+        .Produces<Fornecedor>(StatusCodes.Status200OK);
 
-        routes.MapPut("/api/Fornecedore/{id}", (int id, Fornecedore input) =>
+        routes.MapPut("/api/Fornecedore/{id}", (int id, Fornecedor input) =>
         {
             return Results.NoContent();
         })
         .WithName("UpdateFornecedore")
         .Produces(StatusCodes.Status204NoContent);
 
-        routes.MapPost("/api/Fornecedore/", (Fornecedore model) =>
+        routes.MapPost("/api/Fornecedore/", (Fornecedor model) =>
         {
             //return Results.Created($"//api/Fornecedores/{model.ID}", model);
         })
         .WithName("CreateFornecedore")
-        .Produces<Fornecedore>(StatusCodes.Status201Created);
+        .Produces<Fornecedor>(StatusCodes.Status201Created);
 
         routes.MapDelete("/api/Fornecedore/{id}", (int id) =>
         {
             //return Results.Ok(new Fornecedore { ID = id });
         })
         .WithName("DeleteFornecedore")
-        .Produces<Fornecedore>(StatusCodes.Status200OK);
+        .Produces<Fornecedor>(StatusCodes.Status200OK);
     }
 }}
